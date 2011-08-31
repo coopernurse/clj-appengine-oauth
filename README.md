@@ -3,6 +3,12 @@
 Very very simple oauth library for Clojure for use with Google App Engine.  This library uses the
 Signpost library to do OAuth 1.0 signatures.
 
+## Usage
+
+Add this to your project.clj :dependencies block
+
+    [clj-appengine-oauth "0.1.0"]
+
 ## Tested with
 
 * Twitter (1.0a)
