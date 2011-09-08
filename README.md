@@ -7,15 +7,19 @@ Signpost library to do OAuth 1.0 signatures.
 
 Add this to your project.clj :dependencies block
 
-    [clj-appengine-oauth "0.1.0"]
+    [clj-appengine-oauth "0.1.1"]
 
 ## Tested with
 
-* Twitter (1.0a)
-* Netflix (1.0a)
-* Facebook (2.0)
+* Twitter (1.0a) - `(make-provider-twitter)`
+* Netflix (1.0a) - `(make-provider-netflix consumer app-name)`
+* Google (1.0a) - `(make-provider-google scope)`
+* Facebook (2.0) - `(get-authorize-url-facebook) + (get-protected-url-facebook)`
 
-It probably works with other providers. You may need to fork the code and hack it a bit if you need to pass arbitrary
+It probably works with other providers.  You'll just need to write a "make-provider" function that includes the
+correct endpoint URLs for that provider plus any additional params they require (e.g. "scope" for Google).
+
+You may need to fork the code and hack it a bit if you need to pass arbitrary
 parameters to the provider.  Signpost doesn't have an super obvious way to do that that I saw, but I probably missed it.
 
 ## Gotchas
@@ -124,6 +128,12 @@ Here are some abbreviated snippits
 
     ;; woohoo! stash that facebook-access-token some place safe, like the session
 
+## History
+
+* Version 0.1.1 (Sep 8 2011)
+ * Added `make-provider-google` for Google support
+* Version 0.1.0 (Aug 30 2011)
+ * Initial version
     
 ## License
 

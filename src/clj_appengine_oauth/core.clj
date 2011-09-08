@@ -158,6 +158,16 @@
     "https://twitter.com/oauth/access_token"
     "https://twitter.com/oauth/authorize"))
 
+(defn make-provider-google
+  [scope]
+  (let [enc-sc (url-encode scope)
+             p (make-provider
+      (format "https://www.google.com/accounts/OAuthGetRequestToken?scope=%s" enc-sc)
+      "https://www.google.com/accounts/OAuthGetAccessToken"
+      "https://www.google.com/accounts/OAuthAuthorizeToken") ]
+    (.setOAuth10a p true)
+    p))
+
 (defn make-provider-netflix
   [consumer app-name]
   (let [p (make-provider
